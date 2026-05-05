@@ -33,24 +33,14 @@
       min-height: 100vh;
     }
 
-    /* ── NAV ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid var(--border);
-    }
+    /* ── NAV (original) ── */
+    header { background: var(--dark-2); border-bottom: 0.5px solid var(--border); }
 
     nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 12px 32px;
     }
 
     .logo {
@@ -61,8 +51,8 @@
     }
 
     .logo img {
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -71,16 +61,15 @@
       font-family: 'Playfair Display', serif;
       font-size: 18px;
       color: var(--text);
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .logo .txt .title span { color: var(--gold); }
 
     .logo .txt .subtitle {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--muted);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .logo .txt .subtitle span { color: var(--gold); }
@@ -88,15 +77,13 @@
     .NAV_TOGGLER_MENU {
       list-style: none;
       display: flex;
-      gap: 32px;
+      gap: 28px;
     }
 
     .NAV_TOGGLER_MENU a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 14px;
       transition: color 0.2s;
     }
 
@@ -351,20 +338,19 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .NAV_TOGGLER_MENU { display: none; }
       .NAV_TOGGLER { display: block; }
-
+      .NAV_TOGGLER_MENU { display: none; }
       .NAV_TOGGLER_MENU.open {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 64px;
+        top: 70px;
         left: 0;
         right: 0;
-        background: rgba(10,10,10,0.98);
+        background: var(--dark-2);
         border-bottom: 0.5px solid var(--border);
-        padding: 24px 32px;
-        gap: 20px;
+        padding: 20px 32px;
+        gap: 18px;
         z-index: 99;
       }
 
@@ -399,14 +385,14 @@
         </div>
       </a>
 
-      <ul class="NAV_TOGGLER_MENU" id="navMenu">
+      <ul class="NAV_TOGGLER_MENU">
         <li><a href="index.html">Home</a></li>
         <li><a href="properties.html" class="active_nav">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <div class="NAV_TOGGLER" id="navToggler" aria-label="Toggle menu">
+      <div class="NAV_TOGGLER" aria-label="Toggle menu">
         <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
       </div>
     </nav>
@@ -682,25 +668,17 @@
       slideState[cardIndex] = index;
     }
 
-    // Mobile nav toggle
-    const toggler = document.getElementById('navToggler');
-    const menu = document.getElementById('navMenu');
-    const icon = toggler.querySelector('i');
-
-    toggler.addEventListener('click', () => {
-      menu.classList.toggle('open');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-xmark');
-    });
-
-    // Close nav on link click (mobile)
-    menu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-xmark');
+    // Original nav toggler (from script.js)
+    const navToggler = document.querySelector('.NAV_TOGGLER');
+    const navMenu = document.querySelector('.NAV_TOGGLER_MENU');
+    if (navToggler && navMenu) {
+      navToggler.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        const icon = navToggler.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
       });
-    });
+    }
   </script>
 </body>
 </html>
