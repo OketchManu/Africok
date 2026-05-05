@@ -110,11 +110,36 @@
   width: 100%;
   padding: 120px 32px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-  background-image: url('images/HP2.jpg');
+/* Blurred background image */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HP2.jpg'); /* change if needed */
   background-size: cover;
   background-position: center;
+  filter: blur(6px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+/* Dark overlay for readability */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Keep text above layers */
+.hero * {
   position: relative;
+  z-index: 2;
 }
 
     .hero-label {
