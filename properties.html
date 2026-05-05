@@ -5,10 +5,387 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AFRICOK — Properties</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images/Clogo.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --dark: #0a0a0a;
+      --dark-2: #111111;
+      --dark-3: #1a1a1a;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0ede6;
+      --muted: #888888;
+      --faint: #555555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .logo .txt .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .logo .txt .title span { color: var(--gold); }
+
+    .logo .txt .subtitle {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .logo .txt .subtitle span { color: var(--gold); }
+
+    .NAV_TOGGLER_MENU {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    .NAV_TOGGLER_MENU a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .NAV_TOGGLER_MENU a:hover,
+    .NAV_TOGGLER_MENU a.active_nav { color: var(--gold); }
+
+    .NAV_TOGGLER {
+      display: none;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 32px 60px;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .page-hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .page-hero p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── GRID ── */
+    .properties-grid {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--dark-3);
+      border: 1px solid var(--dark-3);
+    }
+
+    /* ── CARD ── */
+    .property-card-item {
+      background: var(--dark-2);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+
+    .property-card-item:hover { background: #141414; }
+
+    /* image slideshow */
+    .slide-wrap {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .slide-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: scale(1.03);
+    }
+
+    .slide-wrap img.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: rgba(0,0,0,0.55);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+
+    .slide-arrow:hover {
+      background: rgba(201,168,76,0.85);
+      border-color: var(--gold);
+    }
+
+    .slide-arrow.prev { left: 12px; }
+    .slide-arrow.next { right: 12px; }
+
+    .slide-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 3;
+    }
+
+    .slide-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .slide-dots span.active { background: var(--gold); }
+
+    .card-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      pointer-events: none;
+    }
+
+    /* card body */
+    .property-txt {
+      padding: 20px 24px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .property-txt h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .property-txt .location-tag {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .property-txt button {
+      background: transparent;
+      border: 0.5px solid var(--gold);
+      color: var(--gold);
+      padding: 8px 18px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .property-txt button:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 56px 32px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand .title span { color: var(--gold); }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--faint);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-copy {
+      margin-top: 20px !important;
+      font-size: 11px;
+      color: #333 !important;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: var(--faint);
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .NAV_TOGGLER_MENU { display: none; }
+      .NAV_TOGGLER { display: block; }
+
+      .NAV_TOGGLER_MENU.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(10,10,10,0.98);
+        border-bottom: 0.5px solid var(--border);
+        padding: 24px 32px;
+        gap: 20px;
+        z-index: 99;
+      }
+
+      .properties-grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 40px 16px;
+      }
+
+      .page-hero { padding: 48px 16px 40px; }
+      nav { padding: 0 16px; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .properties-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,159 +399,231 @@
         </div>
       </a>
 
-      <ul class="NAV_TOGGLER_MENU">
+      <ul class="NAV_TOGGLER_MENU" id="navMenu">
         <li><a href="index.html">Home</a></li>
         <li><a href="properties.html" class="active_nav">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <div class="NAV_TOGGLER" aria-label="Toggle menu">
+      <div class="NAV_TOGGLER" id="navToggler" aria-label="Toggle menu">
         <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
       </div>
     </nav>
   </header>
 
   <main>
-
     <div class="page-hero">
-      <h1>Our Properties</h1>
+      <h1>Our <em>Properties</em></h1>
+      <p>Exceptional homes across Kenya's finest neighbourhoods</p>
     </div>
 
     <div class="properties-grid">
 
       <!-- Card 1 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house1.jpg" alt="Kilimani House"></div>
-          <div class="swiper-slide"><img src="images/1.0.jpg" alt="Kilimani Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-0">
+          <img src="images/house1.jpg" alt="Kilimani House" class="active">
+          <img src="images/1.0.jpg" alt="Kilimani Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(0,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(0,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(0,0)"></span>
+            <span onclick="goSlide(0,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Kilimani</h3>
-          <span class="price">KSh 55,000,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 55,000,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 2 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house2.jpeg" alt="Milimani House"></div>
-          <div class="swiper-slide"><img src="images/2.0.jpg" alt="Milimani Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-1">
+          <img src="images/house2.jpeg" alt="Milimani House" class="active">
+          <img src="images/2.0.jpg" alt="Milimani Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(1,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(1,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(1,0)"></span>
+            <span onclick="goSlide(1,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Milimani</h3>
-          <span class="price">KSh 45,500,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 45,500,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 3 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house3.jpeg" alt="Runda House"></div>
-          <div class="swiper-slide"><img src="images/3.0.jpg" alt="Runda Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-2">
+          <img src="images/house3.jpeg" alt="Runda House" class="active">
+          <img src="images/3.0.jpg" alt="Runda Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(2,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(2,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(2,0)"></span>
+            <span onclick="goSlide(2,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Runda</h3>
-          <span class="price">KSh 40,000,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 40,000,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 4 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house4.jpg" alt="Kileleshwa House"></div>
-          <div class="swiper-slide"><img src="images/4.0.jpg" alt="Kileleshwa Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-3">
+          <img src="images/house4.jpg" alt="Kileleshwa House" class="active">
+          <img src="images/4.0.jpg" alt="Kileleshwa Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(3,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(3,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(3,0)"></span>
+            <span onclick="goSlide(3,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Kileleshwa</h3>
-          <span class="price">KSh 38,900,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 38,900,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 5 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house5.jpg" alt="Takawiri House"></div>
-          <div class="swiper-slide"><img src="images/5.0.jpg" alt="Takawiri Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-4">
+          <img src="images/house5.jpg" alt="Takawiri House" class="active">
+          <img src="images/5.0.jpg" alt="Takawiri Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(4,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(4,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(4,0)"></span>
+            <span onclick="goSlide(4,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Takawiri</h3>
-          <span class="price">KSh 25,700,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 25,700,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 6 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house6.jpg" alt="Nyali House"></div>
-          <div class="swiper-slide"><img src="images/6.0.jpg" alt="Nyali Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-5">
+          <img src="images/house6.jpg" alt="Nyali House" class="active">
+          <img src="images/6.0.jpg" alt="Nyali Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(5,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(5,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(5,0)"></span>
+            <span onclick="goSlide(5,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Nyali</h3>
-          <span class="price">KSh 20,000,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Mombasa, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 20,000,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 7 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house7.jpeg" alt="Kitisuru House"></div>
-          <div class="swiper-slide"><img src="images/7.0.jpg" alt="Kitisuru Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-6">
+          <img src="images/house7.jpeg" alt="Kitisuru House" class="active">
+          <img src="images/7.0.jpg" alt="Kitisuru Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(6,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(6,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(6,0)"></span>
+            <span onclick="goSlide(6,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Kitisuru</h3>
-          <span class="price">KSh 27,500,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 27,500,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 8 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house8.jpg" alt="Lavington House"></div>
-          <div class="swiper-slide"><img src="images/8.0.jpg" alt="Lavington Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-7">
+          <img src="images/house8.jpg" alt="Lavington House" class="active">
+          <img src="images/8.0.jpg" alt="Lavington Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(7,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(7,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(7,0)"></span>
+            <span onclick="goSlide(7,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Lavington</h3>
-          <span class="price">KSh 36,700,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 36,700,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
       <!-- Card 9 -->
-      <div class="swiper mySwiper property-card-item">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/house9.jpg" alt="Karen House"></div>
-          <div class="swiper-slide"><img src="images/10.jpg" alt="Karen Interior"></div>
+      <div class="property-card-item">
+        <div class="slide-wrap" id="slide-8">
+          <img src="images/house9.jpg" alt="Karen House" class="active">
+          <img src="images/10.jpg" alt="Karen Interior">
+          <div class="card-gradient"></div>
+          <button class="slide-arrow prev" onclick="changeSlide(8,-1)">&#8249;</button>
+          <button class="slide-arrow next" onclick="changeSlide(8,1)">&#8250;</button>
+          <div class="slide-dots">
+            <span class="active" onclick="goSlide(8,0)"></span>
+            <span onclick="goSlide(8,1)"></span>
+          </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="property-txt">
           <h3>Karen</h3>
-          <span class="price">KSh 30,500,000</span>
-          <a href="contact.html"><button>Enquire Now</button></a>
+          <div class="location-tag">Nairobi, Kenya</div>
+          <div class="card-bottom">
+            <span class="price">KSh 30,500,000</span>
+            <a href="contact.html"><button>Enquire Now</button></a>
+          </div>
         </div>
       </div>
 
@@ -202,7 +651,56 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Slide state tracker
+    const slideState = {};
+
+    function getSlide(cardIndex) {
+      const wrap = document.getElementById('slide-' + cardIndex);
+      const imgs = wrap.querySelectorAll('img');
+      const dots = wrap.querySelectorAll('.slide-dots span');
+      if (!slideState[cardIndex]) slideState[cardIndex] = 0;
+      return { wrap, imgs, dots, cur: slideState[cardIndex] };
+    }
+
+    function changeSlide(cardIndex, dir) {
+      const { imgs, dots } = getSlide(cardIndex);
+      const total = imgs.length;
+      let cur = slideState[cardIndex] || 0;
+      cur = (cur + dir + total) % total;
+      applySlide(cardIndex, cur, imgs, dots);
+    }
+
+    function goSlide(cardIndex, index) {
+      const { imgs, dots } = getSlide(cardIndex);
+      applySlide(cardIndex, index, imgs, dots);
+    }
+
+    function applySlide(cardIndex, index, imgs, dots) {
+      imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      slideState[cardIndex] = index;
+    }
+
+    // Mobile nav toggle
+    const toggler = document.getElementById('navToggler');
+    const menu = document.getElementById('navMenu');
+    const icon = toggler.querySelector('i');
+
+    toggler.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-xmark');
+    });
+
+    // Close nav on link click (mobile)
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark');
+      });
+    });
+  </script>
 </body>
 </html>
