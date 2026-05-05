@@ -1,161 +1,155 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Africok - Properties </title>
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" href="images/Clogo.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <style>
-      main {
-        min-height: 100vh;
-        background: rgb(43, 28, 28);
-        width: 100vw;
-      }
-    </style>
-  </head>
-  <body>
-    
-    <header>
-      <nav>
-        <a href="index.html">
-          <div class="logo">
-            <img src="images/Clogo.jpg">
-            <div class="txt">
-              <div class="title">
-                AFRIC<span>OK. </span>
-              </div>
-              <div class="subtitle">
-                Buy<span>A</span>Home
-              </div>
-            </div>
-          </div>
-        </a>
-        <ul class="NAV_TOGGLER_MENU /// NAV_TOGGLER_CLOSE">
-          <li><a href="index.html" class="active_nav">Home</a></li>
-          <li><a href="properties.html">Properties</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <div class="NAV_TOGGLER">
-          <span>
-            <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
-          </span>
-        </div>
-      </nav>
-    </header>
-    <main style="padding: 0px;">
-      <!--MAIN CONTENT GOES HERE-->
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      
-        <div class="FORM-CONTAINER" style="background: url('images/HP1.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat; padding: 20px 30px; width: 100vw; height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <form style="width: 70vw;" action="properties.html">
-            <label for="search" style="color: white;">Search:</label>
-            <input type="text" id="search" name="search">
-            <label for="dropdown" style="color: white;">Select:</label>
-            <select id="dropdown" name="dropdown" style="margin-bottom: 15px;">
-              <option value="option1">Choose Property...</option>
-              <option value="option1">Kilimani</option>
-              <option value="option2">Milimani</option>
-              <option value="option3">Runda</option>
-              <option value="option1">Kileleshwa</option>
-              <option value="option2">Takawiri</option>
-              <option value="option3">Nyali</option>
-            </select>
-            
-            <input type="submit" value="SEARCH">
-          </form>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFRICOK Properties — Find Your Dream Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/Clogo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
 
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/Clogo.jpg" alt="AFRICOK Logo">
+        <div class="txt">
+          <div class="title">AFRIC<span>OK.</span></div>
+          <div class="subtitle">Buy<span>A</span>Home</div>
+        </div>
+      </a>
+
+      <ul class="NAV_TOGGLER_MENU">
+        <li><a href="index.html" class="active_nav">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="NAV_TOGGLER" aria-label="Toggle menu">
+        <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
       </div>
-      
+    </nav>
+  </header>
 
-      <div class="card-container">
-        <div class="card">
-          <img src="images/HP2.jpg" alt="Card Image 1">
-          <h2>Beutiful Homes For You and your Family</h2>
-          <p>Buy a house in a place of yourchoice to your liking. Every beutiful family deserves a good home.</p>
-          <a href="about.html" class="btn">Read More</a>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-label">Luxury Real Estate in Africa</span>
+      <h1>Find Your <em>Perfect</em><br>Home in Kenya</h1>
+      <p>We connect you with Kenya's finest properties — from Nairobi's elite neighbourhoods to Mombasa's coastal retreats.</p>
+      <div class="hero-actions">
+        <a href="properties.html" class="btn-primary">Browse Properties</a>
+        <a href="contact.html" class="btn-outline">Talk to an Agent</a>
+      </div>
+    </section>
+
+    <!-- SEARCH -->
+    <div class="search-section">
+      <form class="search-form" action="properties.html">
+        <input type="text" name="search" placeholder="Search by area, keyword...">
+        <select name="location">
+          <option value="">All Locations</option>
+          <option value="kilimani">Kilimani</option>
+          <option value="milimani">Milimani</option>
+          <option value="runda">Runda</option>
+          <option value="kileleshwa">Kileleshwa</option>
+          <option value="takawiri">Takawiri</option>
+          <option value="nyali">Nyali</option>
+          <option value="kitisuru">Kitisuru</option>
+          <option value="lavington">Lavington</option>
+          <option value="karen">Karen</option>
+        </select>
+        <input type="submit" value="Search">
+      </form>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="section-header">
+      <span class="section-label">Why AFRICOK</span>
+      <h2>A Rare Blend of Luxury<br><em>and Innovation</em></h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="images/HP2.jpg" alt="Luxury Homes">
+        <h3>Beautiful Homes For You and Your Family</h3>
+        <p>Buy a home in the location of your choice. Every family deserves a beautiful, well-designed living space that they can call their own.</p>
+        <a href="about.html" class="btn-link">Our Story</a>
+      </div>
+      <div class="feature-card">
+        <img src="images/HP4.jpg" alt="Secure Neighbourhood">
+        <h3>Live in a Secure Neighbourhood</h3>
+        <p>All properties are located in well-lit, guarded communities with 24/7 security personnel ensuring the safety of every resident.</p>
+        <a href="properties.html" class="btn-link">View Properties</a>
+      </div>
+      <div class="feature-card">
+        <img src="images/HP3.jpg" alt="Sell with AFRICOK">
+        <h3>Want to Sell Your Property?</h3>
+        <p>We represent sellers too — at competitive commissions. Visit our offices weekdays between 8am–5pm EAT for a free property valuation.</p>
+        <a href="contact.html" class="btn-link">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-section">
+      <div class="why-image"></div>
+      <div class="why-content">
+        <span class="section-label">Our Edge</span>
+        <h2>Why Clients Choose AFRICOK</h2>
+        <div class="why-item">
+          <div class="why-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="why-text">
+            <h4>Top Rated Agency</h4>
+            <p>Our specialised client services and regional market expertise keep us at the forefront of the East African property market.</p>
+          </div>
         </div>
-        <div class="card">
-          <img src="images/HP4.jpg" alt="Card Image 2">
-          <h2>Live in a secure Neighbourhood</h2>
-          <p>The houses are very well guarded and well lit. You can move arround at any time of the night without difficulty. There are also security guards at the gets to ensure maximum safety. </p>
-          <a href="about.html" class="btn">Read More</a>
+        <div class="why-item">
+          <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
+          <div class="why-text">
+            <h4>Uncompromising Quality</h4>
+            <p>Every property we list is vetted for quality, legality, and value. Our experienced team works tirelessly to match you with the right home.</p>
+          </div>
         </div>
-        <div class="card">
-          <img src="images/HP3.jpg" alt="Card Image 3">
-          <h2>You can also contact us if you are selling a house</h2>
-          <p>We also buy houses and sell them on behalf of our customers. We do this at a friendly price. You can visit our offices at any time between 8am-5pm EAT.</p>
-          <a href="contact.html" class="btn">CONTACT US</a>
-        </div>
-        <div class="BLEND">
-          <h2 style="color: Red; text-align: center;">A Rare Blend of Luxury and Innovation</h2>
-        <p style="color: black; font-weight: 900 ; font-size: larger;">Our homes are designed and built by professionals who are gifted and do their best.
-          The housesare also designed by our own creative interior designers who are well known world wide.
-          You can also reach out to us if you need any furniture for your home.
-        </p>
-        </div>
-          
+        <div class="why-item">
+          <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="why-text">
+            <h4>Trusted Relationships</h4>
+            <p>We build long-term relationships with our clients based on honesty, transparency, and results that exceed expectations.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="WHY" style="background-position: fixed; height: full; display: flex; flex-direction: column; background-size: cover; background-repeat: no-repeat; background-position: left; background-image: url('images/2.0.jpg'); margin-top: 40px; width: 100vw;">
+  </main>
 
-		
+  <footer>
+    <div class="footer-brand">
+      <div class="title">AFRIC<span>OK.</span></div>
+      <p>Kenya's trusted luxury real estate agency — helping families find exceptional homes since 2013.</p>
+      <p class="footer-copy">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Offices</h4>
+      <p>Kisumu CBD — Jumuia Mall</p>
+      <p>Nairobi — Kenyatta Ave, Suncity</p>
+      <p>Mombasa — Mirikiti</p>
+      <p>Nakuru — Kabarak</p>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <a href="tel:0200011634">0200-011-634</a>
+      <a href="tel:0724345678">0724 345 678</a>
+      <a href="mailto:africok@gmail.com">africok@gmail.com</a>
+      <a href="properties.html">Browse Listings</a>
+    </div>
+  </footer>
 
-        <div style="font-size: 25px; padding: 10px 30px; width: 50%; backdrop-filter: blur(20px);">
-    
-          <div>
-            <p>Why Choose Us</p>
-          </div>
-    
-          <div style="display:flex; flex-direction: row; padding: 15px;">
-            <div class="WHY-IMG">
-              <img src="images/TOP_RATED_BUDGE.jpg" alt="TOP RATED BUDGE" style="border-radius: 30px; width: 300px; height: 300px;">                             
-            </div>
-    
-            <div style="padding-top: 50px; padding-left: 10px;">
-              <p style="font-size: 30px; font-weight: 800;">Top Rated</p>
-              <p style="font-size: 18px; padding: 1px;">Our specialised client services and global outreach enable us to stay the top of the world market.</p>
-            </div>
-          </div>
-    
-          <div style="display:flex; flex-direction: row; padding: 15px;">
-            <div>
-              <img src="images/QUALITY_BUDGE.jpg" alt="QUALITY BUDGE" style="border-radius: 30px; width: 300px; height: 300px;">                             
-            </div>
-    
-            <div style="padding-top: 50px; padding-left: 10px;">
-              <p style="font-size: 30px; font-weight: 800;">Experience Quality</p>
-              <p style="font-size: 18px; padding: 1px;">We give you the best property of your choice and our experienced personel work 24/7 to give you the best client service.</p>
-            </div>
-          </div>
-    
-        </div>
-    
-      </div>
-
-    </main>
-
-    <footer>
-      <p>&copy; AFRICOK Properties Ltd. All rights reserved.</p>
-      <p>Location: 42, Kisumu CBD</p>
-      <p>Nairobi- Kenyatta Avenue- Suncity</p>
-        <p>Mombasa- Mirikiti</p>
-        <p>Nakuru- Kabarak</p>
-        Email: africok@gmail.com
-    </footer>
-
-    <!-- Swiper JS ss -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-    <script src="script.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
