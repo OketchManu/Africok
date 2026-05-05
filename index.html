@@ -5,121 +5,129 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AFRICOK Properties — Find Your Dream Home</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images/Clogo.jpg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
 
   <header>
     <nav>
       <a href="index.html" class="logo">
-        <img src="images/Clogo.jpg" alt="AFRICOK Logo">
-        <div class="txt">
-          <div class="title">AFRIC<span>OK.</span></div>
-          <div class="subtitle">Buy<span>A</span>Home</div>
+        <img src="images/Clogo.jpg" alt="AFRICOK">
+        <div>
+          <div class="logo-title">AFRIC<span>OK.</span></div>
+          <div class="logo-sub">Buy<span>A</span>Home</div>
         </div>
       </a>
 
-      <ul class="NAV_TOGGLER_MENU">
-        <li><a href="index.html" class="active_nav">Home</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="properties.html">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <div class="NAV_TOGGLER" aria-label="Toggle menu">
-        <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
-      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="properties.html">Properties</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </header>
 
   <main>
 
     <!-- HERO -->
     <section class="hero">
-      <span class="hero-label">Luxury Real Estate in Africa</span>
+      <span class="eyebrow">Luxury Real Estate · Kenya</span>
       <h1>Find Your <em>Perfect</em><br>Home in Kenya</h1>
-      <p>We connect you with Kenya's finest properties — from Nairobi's elite neighbourhoods to Mombasa's coastal retreats.</p>
-      <div class="hero-actions">
-        <a href="properties.html" class="btn-primary">Browse Properties</a>
-        <a href="contact.html" class="btn-outline">Talk to an Agent</a>
+      <p>From Nairobi's elite neighbourhoods to Mombasa's coastal retreats — we connect you with Kenya's finest properties.</p>
+      <div class="btn-row">
+        <a href="properties.html" class="btn-solid">Browse Properties</a>
+        <a href="contact.html" class="btn-ghost">Talk to an Agent</a>
       </div>
     </section>
 
     <!-- SEARCH -->
-    <div class="search-section">
+    <div class="search-strip">
       <form class="search-form" action="properties.html">
-        <input type="text" name="search" placeholder="Search by area, keyword...">
+        <input type="text" name="q" placeholder="Search by area or keyword...">
         <select name="location">
           <option value="">All Locations</option>
-          <option value="kilimani">Kilimani</option>
-          <option value="milimani">Milimani</option>
-          <option value="runda">Runda</option>
-          <option value="kileleshwa">Kileleshwa</option>
-          <option value="takawiri">Takawiri</option>
-          <option value="nyali">Nyali</option>
-          <option value="kitisuru">Kitisuru</option>
-          <option value="lavington">Lavington</option>
-          <option value="karen">Karen</option>
+          <option>Kilimani</option><option>Milimani</option><option>Runda</option>
+          <option>Kileleshwa</option><option>Takawiri</option><option>Nyali</option>
+          <option>Kitisuru</option><option>Lavington</option><option>Karen</option>
         </select>
         <input type="submit" value="Search">
       </form>
     </div>
 
     <!-- FEATURES -->
-    <div class="section-header">
-      <span class="section-label">Why AFRICOK</span>
+    <div class="section-head">
+      <span class="tag">Why AFRICOK</span>
       <h2>A Rare Blend of Luxury<br><em>and Innovation</em></h2>
     </div>
 
-    <div class="features-grid">
-      <div class="feature-card">
+    <div class="cards-grid">
+      <div class="info-card">
         <img src="images/HP2.jpg" alt="Luxury Homes">
-        <h3>Beautiful Homes For You and Your Family</h3>
-        <p>Buy a home in the location of your choice. Every family deserves a beautiful, well-designed living space that they can call their own.</p>
-        <a href="about.html" class="btn-link">Our Story</a>
+        <div class="info-card-body">
+          <h3>Beautiful Homes For You and Your Family</h3>
+          <p>Every family deserves a well-designed, beautiful home. We help you find the one that fits your life perfectly.</p>
+          <a href="about.html" class="text-link">Our Story →</a>
+        </div>
       </div>
-      <div class="feature-card">
+      <div class="info-card">
         <img src="images/HP4.jpg" alt="Secure Neighbourhood">
-        <h3>Live in a Secure Neighbourhood</h3>
-        <p>All properties are located in well-lit, guarded communities with 24/7 security personnel ensuring the safety of every resident.</p>
-        <a href="properties.html" class="btn-link">View Properties</a>
+        <div class="info-card-body">
+          <h3>Live in a Secure Neighbourhood</h3>
+          <p>All our properties sit in well-lit, guarded communities with 24/7 security ensuring every resident's safety.</p>
+          <a href="properties.html" class="text-link">View Properties →</a>
+        </div>
       </div>
-      <div class="feature-card">
+      <div class="info-card">
         <img src="images/HP3.jpg" alt="Sell with AFRICOK">
-        <h3>Want to Sell Your Property?</h3>
-        <p>We represent sellers too — at competitive commissions. Visit our offices weekdays between 8am–5pm EAT for a free property valuation.</p>
-        <a href="contact.html" class="btn-link">Contact Us</a>
+        <div class="info-card-body">
+          <h3>Looking to Sell Your Property?</h3>
+          <p>We represent sellers at competitive rates. Visit our offices weekdays 8am–5pm for a free property valuation.</p>
+          <a href="contact.html" class="text-link">Contact Us →</a>
+        </div>
       </div>
     </div>
 
-    <!-- WHY CHOOSE US -->
-    <section class="why-section">
-      <div class="why-image"></div>
+    <!-- WHY US -->
+    <section class="why-split">
+      <div class="why-img" style="background-image:url('images/2.0.jpg')"></div>
       <div class="why-content">
-        <span class="section-label">Our Edge</span>
+        <span class="tag">Our Edge</span>
         <h2>Why Clients Choose AFRICOK</h2>
         <div class="why-item">
           <div class="why-icon"><i class="fa-solid fa-star"></i></div>
-          <div class="why-text">
+          <div>
             <h4>Top Rated Agency</h4>
-            <p>Our specialised client services and regional market expertise keep us at the forefront of the East African property market.</p>
+            <p>Our client services and regional expertise keep us at the forefront of East African real estate.</p>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
-          <div class="why-text">
+          <div>
             <h4>Uncompromising Quality</h4>
-            <p>Every property we list is vetted for quality, legality, and value. Our experienced team works tirelessly to match you with the right home.</p>
+            <p>Every listing is vetted for quality, legality, and value — we match you with the right home, every time.</p>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
-          <div class="why-text">
+          <div>
             <h4>Trusted Relationships</h4>
-            <p>We build long-term relationships with our clients based on honesty, transparency, and results that exceed expectations.</p>
+            <p>We build lasting client relationships grounded in honesty, transparency, and consistent results.</p>
           </div>
         </div>
       </div>
@@ -128,28 +136,28 @@
   </main>
 
   <footer>
-    <div class="footer-brand">
-      <div class="title">AFRIC<span>OK.</span></div>
-      <p>Kenya's trusted luxury real estate agency — helping families find exceptional homes since 2013.</p>
-      <p class="footer-copy">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</p>
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">AFRIC<span>OK.</span></div>
+        <p>Kenya's trusted luxury real estate agency, helping families find exceptional homes since 2013.</p>
+      </div>
+      <div class="f-col">
+        <h5>Offices</h5>
+        <p>Kisumu CBD — Jumuia Mall</p>
+        <p>Nairobi — Kenyatta Ave</p>
+        <p>Mombasa — Mirikiti</p>
+        <p>Nakuru — Kabarak</p>
+      </div>
+      <div class="f-col">
+        <h5>Contact</h5>
+        <a href="tel:0200011634">0200-011-634</a>
+        <a href="tel:0724345678">0724 345 678</a>
+        <a href="mailto:africok@gmail.com">africok@gmail.com</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Offices</h4>
-      <p>Kisumu CBD — Jumuia Mall</p>
-      <p>Nairobi — Kenyatta Ave, Suncity</p>
-      <p>Mombasa — Mirikiti</p>
-      <p>Nakuru — Kabarak</p>
-    </div>
-    <div class="footer-col">
-      <h4>Get In Touch</h4>
-      <a href="tel:0200011634">0200-011-634</a>
-      <a href="tel:0724345678">0724 345 678</a>
-      <a href="mailto:africok@gmail.com">africok@gmail.com</a>
-      <a href="properties.html">Browse Listings</a>
-    </div>
+    <p class="f-copy">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>
