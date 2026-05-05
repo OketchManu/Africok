@@ -30,7 +30,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
@@ -136,14 +136,14 @@
   </main>
 
   <footer>
-    <div class="footer-grid">
+    <div class="footer-inner">
       <div>
         <div class="f-logo">AFRIC<span>OK.</span></div>
         <p>Kenya's trusted luxury real estate agency, helping families find exceptional homes since 2013.</p>
       </div>
       <div class="f-col">
         <h5>Offices</h5>
-        <p>Kisumu CBD — Jumuia Mall</p>
+        <p>Kisumu — Jumuia Mall</p>
         <p>Nairobi — Kenyatta Ave</p>
         <p>Mombasa — Mirikiti</p>
         <p>Nakuru — Kabarak</p>
@@ -158,6 +158,19 @@
     <p class="f-copy">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</p>
   </footer>
 
-  <script src="site.js"></script>
+  <script>
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  </script>
 </body>
 </html>
