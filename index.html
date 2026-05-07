@@ -8,170 +8,109 @@
   <link rel="icon" href="images/Clogo.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --dark: #0a0a0a;
-      --dark-2: #111111;
-      --dark-3: #1a1a1a;
-      --border: rgba(255,255,255,0.08);
-      --text: #f0ede6;
-      --muted: #888888;
-      --faint: #444444;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── NAV ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #111111;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .logo .txt .title {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: var(--text);
-      line-height: 1.1;
-    }
-
-    .logo .txt .title span { color: var(--gold); }
-
-    .logo .txt .subtitle {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .logo .txt .subtitle span { color: var(--gold); }
-
-    .NAV_TOGGLER_MENU {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-    }
-
-    .NAV_TOGGLER_MENU a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .NAV_TOGGLER_MENU a:hover,
-    .NAV_TOGGLER_MENU a.active_nav { color: var(--gold); }
-
-    .NAV_TOGGLER {
-      display: none;
-      cursor: pointer;
-      color: var(--text);
-      font-size: 20px;
-    }
 
     /* ── HERO ── */
     .hero {
-  width: 100%;
-  padding: 120px 32px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
+      width: 100%;
+      padding: 140px 32px 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Blurred background image */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('images/HP2.jpg'); /* change if needed */
-  background-size: cover;
-  background-position: center;
-  filter: blur(6px);
-  transform: scale(1.1);
-  z-index: 0;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('images/HP2.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(2px);
+      transform: scale(1.06);
+      z-index: 0;
+    }
 
-/* Dark overlay for readability */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-}
+    /* Rich dark-gold gradient overlay */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(26,20,16,0.88) 0%,
+        rgba(34,28,21,0.82) 40%,
+        rgba(42,34,26,0.75) 100%
+      );
+      z-index: 1;
+    }
 
-/* Keep text above layers */
-.hero * {
-  position: relative;
-  z-index: 2;
-}
+    .hero * { position: relative; z-index: 2; }
+
+    /* Decorative gold corner lines */
+    .hero-deco {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-deco-tl {
+      top: 40px; left: 48px;
+      width: 60px; height: 60px;
+      border-top: 1px solid var(--border-gold);
+      border-left: 1px solid var(--border-gold);
+    }
+    .hero-deco-br {
+      bottom: 40px; right: 48px;
+      width: 60px; height: 60px;
+      border-bottom: 1px solid var(--border-gold);
+      border-right: 1px solid var(--border-gold);
+    }
 
     .hero-label {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .hero-label::before, .hero-label::after {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(44px, 8vw, 80px);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 9vw, 100px);
       font-weight: 400;
       color: var(--text);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      margin-bottom: 30px;
     }
 
     .hero h1 em {
       color: var(--gold);
       font-style: italic;
+      font-weight: 300;
     }
 
     .hero p {
       font-size: 16px;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 540px;
-      margin: 0 auto 40px;
+      color: var(--text-2);
+      line-height: 1.9;
+      max-width: 520px;
+      margin: 0 auto 48px;
+      font-weight: 300;
     }
 
     .hero-actions {
@@ -181,211 +120,209 @@
       flex-wrap: wrap;
     }
 
-    .btn-primary {
-      background: var(--gold);
-      color: #0a0a0a;
-      padding: 14px 32px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover { background: var(--gold-light); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 0.5px solid rgba(255,255,255,0.25);
-      padding: 14px 32px;
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
     /* ── SEARCH ── */
     .search-section {
-      padding: 0 32px 60px;
-      max-width: 800px;
+      padding: 0 40px 80px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .search-form {
+    .search-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      box-shadow: var(--shadow-lg), 0 0 40px rgba(201,151,58,0.06);
       display: flex;
-      gap: 1px;
-      background: var(--dark-3);
-      border: 1px solid var(--dark-3);
+      gap: 0;
     }
 
-    .search-form input[type="text"],
-    .search-form select {
+    .search-wrap input[type="text"],
+    .search-wrap select {
       flex: 1;
-      background: var(--dark-2);
+      background: transparent;
       border: none;
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 14px;
-      padding: 16px 20px;
+      padding: 18px 22px;
       outline: none;
       appearance: none;
       -webkit-appearance: none;
+      border-right: 1px solid var(--border);
+      font-weight: 300;
     }
 
-    .search-form input[type="text"]::placeholder { color: var(--faint); }
+    .search-wrap input[type="text"]::placeholder { color: var(--text-faint); }
 
-    .search-form select {
+    .search-wrap select {
       cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      color: var(--text-muted);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9973a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
+      background-position: right 18px center;
+      background-color: transparent;
+      padding-right: 44px;
     }
 
-    .search-form select option { background: #1a1a1a; }
+    .search-wrap select option { background: var(--bg-3); color: var(--text); }
 
-    .search-form input[type="submit"] {
+    .search-wrap input[type="submit"] {
       background: var(--gold);
-      color: #0a0a0a;
+      color: var(--bg);
       border: none;
-      padding: 16px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      padding: 18px 36px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
 
-    .search-form input[type="submit"]:hover { background: var(--gold-light); }
+    .search-wrap input[type="submit"]:hover {
+      background: var(--gold-bright);
+      box-shadow: 0 0 24px rgba(201,151,58,0.35);
+    }
 
     /* ── SECTION HEADER ── */
-    .section-label {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
     .section-header {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 32px 40px;
+      padding: 0 40px 52px;
     }
 
     .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4.5vw, 54px);
       font-weight: 400;
       color: var(--text);
-      line-height: 1.2;
+      line-height: 1.18;
     }
 
     .section-header h2 em {
       color: var(--gold);
       font-style: italic;
+      font-weight: 300;
     }
 
     /* ── FEATURES GRID ── */
     .features-grid {
-      max-width: 1200px;
-      margin: 0 auto 80px;
-      padding: 0 32px;
+      max-width: 1280px;
+      margin: 0 auto 100px;
+      padding: 0 40px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--dark-3);
-      border: 1px solid var(--dark-3);
+      gap: 20px;
     }
 
     .feature-card {
-      background: var(--dark-2);
-      padding: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       overflow: hidden;
-      transition: background 0.2s;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s;
     }
 
-    .feature-card:hover { background: #141414; }
+    .feature-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-xl), 0 0 40px rgba(201,151,58,0.08);
+      border-color: var(--border-mid);
+    }
 
     .feature-card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       display: block;
+      transition: transform 0.55s ease;
+      filter: brightness(0.88) saturate(0.9);
     }
 
+    .feature-card:hover img { transform: scale(1.05); filter: brightness(0.95) saturate(1); }
+
     .feature-card-body {
-      padding: 28px 28px 32px;
+      padding: 32px 32px 36px;
     }
 
     .feature-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
       color: var(--text);
       margin-bottom: 12px;
       line-height: 1.3;
     }
 
     .feature-card p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    /* Gold divider above body */
+    .feature-card-body::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
       margin-bottom: 20px;
     }
 
-    .btn-link {
-      font-size: 12px;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 0.5px solid var(--gold);
-      padding-bottom: 2px;
-      transition: opacity 0.2s;
-    }
-
-    .btn-link:hover { opacity: 0.7; }
-
     /* ── WHY SECTION ── */
     .why-section {
-      max-width: 1200px;
-      margin: 0 auto 80px;
-      padding: 0 32px;
+      max-width: 1280px;
+      margin: 0 auto 100px;
+      padding: 0 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--dark-3);
-      border: 1px solid var(--dark-3);
+      gap: 0;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
     }
 
     .why-image {
-      background: var(--dark-2);
       background-image: url('images/HP2.jpg');
       background-size: cover;
       background-position: center;
-      min-height: 480px;
+      min-height: 520px;
+      position: relative;
+    }
+
+    .why-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,151,58,0.12), transparent 60%),
+                  linear-gradient(to right, rgba(26,20,16,0.3), transparent);
     }
 
     .why-content {
-      background: var(--dark-2);
-      padding: 56px 48px;
+      background: var(--bg-3);
+      padding: 64px 56px;
+      position: relative;
+    }
+
+    /* subtle gold top-border accent */
+    .why-content::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
     }
 
     .why-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
       font-weight: 400;
       color: var(--text);
-      margin-bottom: 40px;
+      margin-bottom: 44px;
       line-height: 1.3;
     }
 
@@ -393,13 +330,16 @@
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
+    .why-item:last-child { margin-bottom: 0; }
+
     .why-icon {
-      width: 40px;
-      height: 40px;
-      border: 0.5px solid var(--border);
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border-gold);
+      background: var(--gold-subtle);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -412,97 +352,34 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     .why-text p {
       font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-weight: 300;
     }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 0.5px solid var(--border);
-      padding: 56px 32px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-brand .title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .footer-brand .title span { color: var(--gold); }
-
-    .footer-brand p {
-      font-size: 13px;
-      color: var(--faint);
-      line-height: 1.7;
-      max-width: 280px;
-    }
-
-    .footer-copy { margin-top: 20px !important; font-size: 11px; color: #333 !important; }
-
-    .footer-col h4 {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .footer-col p,
-    .footer-col a {
-      display: block;
-      font-size: 13px;
-      color: var(--faint);
-      margin-bottom: 8px;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover { color: var(--gold); }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .NAV_TOGGLER_MENU { display: none; }
-      .NAV_TOGGLER { display: block; }
-
-      .NAV_TOGGLER_MENU.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #111111;
-        border-bottom: 0.5px solid var(--border);
-        padding: 24px 32px;
-        gap: 20px;
-        z-index: 200;
-      }
-
-      .hero { padding: 60px 16px 48px; }
-      .search-section { padding: 0 16px 48px; }
-      .search-form { flex-direction: column; }
-      .section-header { padding: 0 16px 32px; }
-      .features-grid { grid-template-columns: 1fr; padding: 0 16px; }
-      .why-section { grid-template-columns: 1fr; padding: 0 16px; }
-      .why-image { min-height: 240px; }
-      .why-content { padding: 36px 24px; }
-      footer { grid-template-columns: 1fr; padding: 40px 16px; }
-      nav { padding: 12px 16px; }
+      .hero { padding: 80px 20px 64px; }
+      .hero-deco-tl, .hero-deco-br { display: none; }
+      .search-section { padding: 0 20px 56px; }
+      .search-wrap { flex-direction: column; }
+      .search-wrap input[type="text"],
+      .search-wrap select { border-right: none; border-bottom: 1px solid var(--border); }
+      .section-header { padding: 0 20px 36px; }
+      .features-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 16px; margin-bottom: 60px; }
+      .why-section { grid-template-columns: 1fr; padding: 0 20px; margin-bottom: 60px; }
+      .why-image { min-height: 260px; }
+      .why-content { padding: 40px 28px; }
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); padding: 0 24px; }
+      .why-section { padding: 0 24px; }
     }
   </style>
 </head>
@@ -517,14 +394,12 @@
           <div class="subtitle">Buy<span>A</span>Home</div>
         </div>
       </a>
-
       <ul class="NAV_TOGGLER_MENU" id="navMenu">
         <li><a href="index.html" class="active_nav">Home</a></li>
         <li><a href="properties.html">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
       <div class="NAV_TOGGLER" id="navToggler" aria-label="Toggle menu">
         <i class="NAV_TOGGLER_ICON fa-solid fa-bars"></i>
       </div>
@@ -534,6 +409,8 @@
   <main>
 
     <section class="hero">
+      <div class="hero-deco hero-deco-tl"></div>
+      <div class="hero-deco hero-deco-br"></div>
       <span class="hero-label">Luxury Real Estate in Africa</span>
       <h1>Find Your <em>Perfect</em><br>Home in Kenya</h1>
       <p>We connect you with Kenya's finest properties — from Nairobi's elite neighbourhoods to Mombasa's coastal retreats.</p>
@@ -544,7 +421,7 @@
     </section>
 
     <div class="search-section">
-      <form class="search-form" action="properties.html">
+      <form class="search-wrap" action="properties.html">
         <input type="text" name="search" placeholder="Search by area, keyword...">
         <select name="location">
           <option value="">All Locations</option>
@@ -610,14 +487,14 @@
           <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
           <div class="why-text">
             <h4>Uncompromising Quality</h4>
-            <p>Every property we list is vetted for quality, legality, and value. Our experienced team works tirelessly to match you with the right home.</p>
+            <p>Every property we list is vetted for quality, legality, and value. Our team works tirelessly to match you with the right home.</p>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
           <div class="why-text">
             <h4>Trusted Relationships</h4>
-            <p>We build long-term relationships with our clients based on honesty, transparency, and results that exceed expectations.</p>
+            <p>We build long-term relationships based on honesty, transparency, and results that exceed expectations.</p>
           </div>
         </div>
       </div>
@@ -626,27 +503,30 @@
   </main>
 
   <footer>
-    <div class="footer-brand">
-      <div class="title">AFRIC<span>OK.</span></div>
-      <p>Kenya's trusted luxury real estate agency — helping families find exceptional homes since 2013.</p>
-      <p class="footer-copy">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="f-logo">AFRIC<span>OK.</span></div>
+        <p>Kenya's trusted luxury real estate agency — helping families find exceptional homes since 2013.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Offices</h4>
+        <p>Kisumu CBD — Jumuia Mall</p>
+        <p>Nairobi — Kenyatta Ave, Suncity</p>
+        <p>Mombasa — Mirikiti</p>
+        <p>Nakuru — Kabarak</p>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <a href="tel:0200011634">0200-011-634</a>
+        <a href="tel:0724345678">0724 345 678</a>
+        <a href="mailto:africok@gmail.com">africok@gmail.com</a>
+        <a href="properties.html">Browse Listings</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Offices</h4>
-      <p>Kisumu CBD — Jumuia Mall</p>
-      <p>Nairobi — Kenyatta Ave, Suncity</p>
-      <p>Mombasa — Mirikiti</p>
-      <p>Nakuru — Kabarak</p>
-    </div>
-    <div class="footer-col">
-      <h4>Get In Touch</h4>
-      <a href="tel:0200011634">0200-011-634</a>
-      <a href="tel:0724345678">0724 345 678</a>
-      <a href="mailto:africok@gmail.com">africok@gmail.com</a>
-      <a href="properties.html">Browse Listings</a>
-    </div>
+    <div class="footer-bottom">&copy; 2024 AFRICOK Properties Ltd. All rights reserved.</div>
   </footer>
 
+  <script src="script.js"></script>
   <script>
     const toggler = document.getElementById('navToggler');
     const menu = document.getElementById('navMenu');
